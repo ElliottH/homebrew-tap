@@ -4,7 +4,7 @@ cask "prattle" do
 
   url "https://github.com/ElliottH/prattle/releases/download/#{version}/prattle-#{version}-macos.zip"
   name "prattle"
-  desc "Menu bar app that turns your voice into text, anywhere"
+  desc "Menu bar app that turns your voice into text, anywhere, on-device"
   homepage "https://github.com/ElliottH/prattle"
 
   app "prattle.app"
