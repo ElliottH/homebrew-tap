@@ -1,6 +1,6 @@
 cask "prattle" do
-  version "0.0.1"
-  sha256 "328f861b9c85b19904d82ba16fef95d249950d4f824c92989b0afe780b1b4675"
+  version "0.0.2"
+  sha256 "298c453499e89966f636cd8ac6401aedec809345a036023d36cc87cc328bc441"
 
   url "https://github.com/ElliottH/prattle/releases/download/#{version}/prattle-#{version}-macos.zip"
   name "prattle"
