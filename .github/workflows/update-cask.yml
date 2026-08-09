@@ -1,0 +1,59 @@
+name: Update cask
+
+on:
+  workflow_call:
+    inputs:
+      app:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      sha256:
+        required: true
+        type: string
+    secrets:
+      TAP_REPO_TOKEN:
+        required: true
+  workflow_dispatch:
+    inputs:
+      app:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      sha256:
+        required: true
+        type: string
+
+jobs:
+  update-cask:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ElliottH/homebrew-tap
+          ref: main
+          token: ${{ secrets.TAP_REPO_TOKEN || github.token }}
+
+      - name: Bump version and sha256
+        run: |
+          CASK="Casks/${{ inputs.app }}.rb"
+          test -f "$CASK"
+          sed -i -E "s/version \"[^\"]+\"/version \"${{ inputs.version }}\"/" "$CASK"
+          sed -i -E "s/sha256 \"[^\"]+\"/sha256 \"${{ inputs.sha256 }}\"/" "$CASK"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "Casks/${{ inputs.app }}.rb"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "${{ inputs.app }} ${{ inputs.version }}"
+          git push
