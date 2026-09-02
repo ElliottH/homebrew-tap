@@ -1,6 +1,6 @@
 cask "switchr" do
-  version "0.0.3"
-  sha256 "6d3c7642b6137ca907a65a9744c218801b3e3885464ea637dfdef31327a878e7"
+  version "0.0.4"
+  sha256 "6d4ed113983d2314f361b9a3dcf2f5e55669454a50fd11efd3eb58a8e34fa3ac"
 
   url "https://github.com/ElliottH/switchr/releases/download/#{version}/switchr-#{version}-macos.zip"
   name "switchr"
