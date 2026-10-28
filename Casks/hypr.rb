@@ -1,6 +1,6 @@
 cask "hypr" do
-  version "1.0.5"
-  sha256 "5353292786328dbb47547299de8ea6bd58f83351152069cf22c0f2d7cebe5aa3"
+  version "1.0.6"
+  sha256 "78a9292ee666f94e92182617dcf1ab47dba08976faf2618c70344115e3aca6b9"
 
   url "https://github.com/ElliottH/hypr/releases/download/#{version}/hypr-#{version}-macos.zip"
   name "hypr"
